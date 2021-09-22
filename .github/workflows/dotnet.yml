@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Show Version
-      run: echo ${{ env.VERSION_TAG }}
+      run: echo ${{ env.VERSION_TAG }} && echo ${{ env.VERSION_TAG_STRIPPED }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
