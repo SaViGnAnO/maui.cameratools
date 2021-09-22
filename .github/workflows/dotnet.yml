@@ -4,6 +4,10 @@ on:
   push:
     tags: 
       - '*'
+      
+env:
+  VERSION_TAG: ${{ github.ref }}
+  VERSION_TAG_STRIPPED: ${{ github.ref }}
 
 jobs:
   build:
@@ -12,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Show Version
+      run: echo ${{ env.VERSION_TAG }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -20,7 +26,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -p:PackageVersion=${ github.ref }
+      run: dotnet build --no-restore -p:PackageVersion=
     - name: Pack
       run: dotnet pack --include-symbols -o ./nuget
     - name: Publish
