@@ -1,0 +1,26 @@
+name: .NET
+
+on:
+  push:
+    tags: 
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore -p:PackageVersion=${{ github.event.action.ref/refs\/tags\// }}
+    - name: Pack
+      run: dotnet pack --include-symbols -o ./nuget
+    - name: Publish
+      run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
