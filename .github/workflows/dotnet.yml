@@ -7,7 +7,7 @@ on:
       
 env:
   VERSION_TAG: ${{ github.ref }}
-  VERSION_TAG_STRIPPED: ${{ github.ref/\/refs\/tags\// }}
+  VERSION_TAG_STRIPPED: echo ${ github.ref }/\/refs\/tags\//
 
 jobs:
   build:
