@@ -20,7 +20,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -p:PackageVersion=${{github.ref//refs/tags//}}
+      run: dotnet build --no-restore -p:PackageVersion=${{ github.event.action.ref//refs/tags// }}
     - name: Pack
       run: dotnet pack --include-symbols -o ./nuget
     - name: Publish
