@@ -24,12 +24,10 @@ jobs:
       with:
         dotnet-version: 6.0
         include-prerelease: true
-    # - name: Install maui-check
-    #   run: dotnet tool install -g Redth.Net.Maui.Check
-    # - name: maui-check
-    #   run: /root/.dotnet/tools/maui-check -f -n
-    - name: Setup Maui
-      run: dotnet workload install --no-cache --disable-parallel android-aot wasm-tools --skip-manifest-update --source "https://api.nuget.org/v3/index.json" --source "https://pkgs.dev.azure.com/dnceng/public/_packaging/6.0.100-rc.1.21458.32-shipping/nuget/v3/index.json"
+    - name: Install maui-check
+      run: dotnet tool install -g Redth.Net.Maui.Check
+    - name: maui-check
+      run: /root/.dotnet/tools/maui-check --preview --ci --non-interactive --fix --skip xcode --skip vswin --skip vsmac --skip edgewebview2
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
