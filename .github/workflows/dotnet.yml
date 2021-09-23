@@ -4,30 +4,31 @@ on:
   push:
     tags: 
       - '*'
-      
-env:
-  VERSION_TAG: ${{ github.ref }}
-  VERSION_TAG_STRIPPED: echo ${ github.ref }/\/refs\/tags\//
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
+    - id: get-version
+      run: |
+        version=$(echo ${{github.ref}} | cut -d "/" -f3)
+        echo "::set-output name=version::$version"
+    - name: Print actual version
+      run: echo "${{steps.get-version.outputs.version}}"
     - uses: actions/checkout@v2
-    - name: Show Version
-      run: echo ${{ env.VERSION_TAG }} && echo ${{ env.VERSION_TAG_STRIPPED }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 6.0
         include-prerelease: true
+    - name: Setup Maui
+      run: dotnet workload install maui-android
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -p:PackageVersion=
+      run: dotnet build --no-restore -p:PackageVersion=${{steps.get-version.outputs.version}}
     - name: Pack
       run: dotnet pack --include-symbols -o ./nuget
-    - name: Publish
-      run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
+    # - name: Publish
+    #   run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
