@@ -10,18 +10,18 @@ jobs:
     defaults:
       run:
         shell: pwsh
-        working-directory: ./Maui.CameraTools
     steps:
+    - uses: action/checkout@v2
     - name: Install Required Workloads
       run: dotnet workload install --no-cache --disable-parallel android-aot ios maccatalyst maui wasm-tools --skip-manifest-update --source "https://api.nuget.org/v3/index.json" --source "https://pkgs.dev.azure.com/dnceng/public/_packaging/6.0.100-rc.1.21458.32-shipping/nuget/v3/index.json"
     - name: Restore Dependencies
-      run: dotnet restore Maui.CameraTools.csproj
+      run: dotnet restore
     - name: Build Solution
       run: |
         $VERSION=$env:GITHUB_REF.Substring($env:GITHUB_REF.LastIndexOf('/') + 1)
         echo "PACKAGE VERSION: $VERSION"
         dotnet build --no-restore -p:PackageVersion=$VERSION Maui.CameraTools.scsproj
     - name: Pack Nuget Package
-      run: dotnet pack --include-symbols -o ./nuget Maui.CameraTools.scsproj
+      run: dotnet pack --include-symbols -o ./nuget
     # - name: Publish Nuget Package
     #   run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
