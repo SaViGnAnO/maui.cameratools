@@ -8,20 +8,17 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
-    - name: Install maui-check
-      run: dotnet tool install -g Redth.Net.Maui.Check
+    - name: Install Required Workloads
+      run: dotnet workload install --no-cache --disable-parallel android-aot ios maccatalyst maui wasm-tools --skip-manifest-update --source "https://api.nuget.org/v3/index.json" --source "https://pkgs.dev.azure.com/dnceng/public/_packaging/6.0.100-rc.1.21458.32-shipping/nuget/v3/index.json"
       shell: pwsh
-    - name: maui-check
-      run: maui-check --preview --ci --non-interactive --fix --skip xcode --skip vswin --skip vsmac --skip edgewebview2
-      shell: pwsh
-    - name: Restore dependencies
+    - name: Restore Dependencies
       run: dotnet restore
     - name: Build
       run: |
-        $VERION=$env:GITHUB_REF.Substring($env:GITHUB_REF.LastIndexOf('/') + 1)
+        $VERSION=$env:GITHUB_REF.Substring($env:GITHUB_REF.LastIndexOf('/') + 1)
         echo "PACKAGE VERSION: $VERSION"
         dotnet build --no-restore -p:PackageVersion=$VERSION
-    # - name: Pack
-    #   run: dotnet pack --include-symbols -o ./nuget
+    - name: Pack
+      run: dotnet pack --include-symbols -o ./nuget
     # - name: Publish
     #   run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
