@@ -6,7 +6,7 @@ on:
       - '*'
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
     steps:
     - id: get-version
       run: |
@@ -15,24 +15,22 @@ jobs:
     - name: Print actual version
       run: echo "${{steps.get-version.outputs.version}}"
     - uses: actions/checkout@v2
-    - name: Setup .NET 5
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0
     - name: Setup .NET 6
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0
         include-prerelease: true
-    - name: Install maui-check
-      run: dotnet tool install -g Redth.Net.Maui.Check
-    - name: maui-check
-      run: /root/.dotnet/tools/maui-check --preview --ci --non-interactive --fix --skip xcode --skip vswin --skip vsmac --skip edgewebview2
+    # - name: Install maui-check
+    #   run: dotnet tool install -g Redth.Net.Maui.Check
+    # - name: maui-check
+    #   run: /root/.dotnet/tools/maui-check --preview --ci --non-interactive --fix --skip xcode --skip vswin --skip vsmac --skip edgewebview2
+    - name: Install required workloads
+      run: dotnet workload install maui maui-mobile
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore # -p:PackageVersion=${{steps.get-version.outputs.version}}
-    # - name: Pack
-    #   run: dotnet pack --include-symbols -o ./nuget
-    # - name: Publish
-    #   run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
+      run: dotnet build --no-restore -p:PackageVersion=${{steps.get-version.outputs.version}}
+    - name: Pack
+      run: dotnet pack --include-symbols -o ./nuget
+    - name: Publish
+      run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
