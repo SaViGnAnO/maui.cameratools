@@ -40,7 +40,7 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<Company>Savi Studios, LLC</Company>
 		<ApplicationIcon>Resources\icon.ico</ApplicationIcon>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<AssemblyVersion> </AssemblyVersion>
 	</PropertyGroup>
 
