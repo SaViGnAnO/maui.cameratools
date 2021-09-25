@@ -30,6 +30,6 @@ jobs:
         echo "PACKAGE VERSION: $VERSION"
         dotnet build --no-restore
     - name: Pack Nuget Package
-      run: dotnet pack --include-symbols -o ./nuget
+      run: dotnet pack -o ./nuget
     - name: Publish Nuget Package
       run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
