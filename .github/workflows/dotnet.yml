@@ -13,11 +13,13 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2.3.4
-    - name: Install JDK 11
-        uses: joschi/setup-jdk@v2
-        with:
-          java-version: '11'
-          architecture: 'x64'
+    - name: Setup Java JDK
+      uses: actions/setup-java@v2.3.0
+      with:
+        # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
+        java-version: 11
+        # Java distribution. See the list of supported distributions in README file
+        distribution: zulu
     - name: Install Required Workloads
       run: dotnet workload install --no-cache --disable-parallel android-aot ios maccatalyst maui wasm-tools --skip-manifest-update --source "https://api.nuget.org/v3/index.json" --source "https://pkgs.dev.azure.com/dnceng/public/_packaging/6.0.100-rc.1.21458.32-shipping/nuget/v3/index.json"
     - name: Restore Dependencies
