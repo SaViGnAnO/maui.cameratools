@@ -21,8 +21,8 @@ jobs:
       run: |
         $VERSION=$env:GITHUB_REF.Substring($env:GITHUB_REF.LastIndexOf('/') + 1)
         echo "PACKAGE VERSION: $VERSION"
-        dotnet build --no-restore -p:PackageVersion=$VERSION Maui.CameraTools.scsproj
+        dotnet build --no-restore -p:PackageVersion=$VERSION
     - name: Pack Nuget Package
       run: dotnet pack --include-symbols -o ./nuget
-    # - name: Publish Nuget Package
-    #   run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
+    - name: Publish Nuget Package
+      run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
