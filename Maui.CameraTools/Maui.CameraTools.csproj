@@ -30,8 +30,6 @@
 		<Description>Maui-supported Camera tools including CameraView, CardReaderView and BardcodeReaderView</Description>
 		<PackageIcon></PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<Version>0.1.2-pre</Version>
-		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,camera,cameraview,cardscanner,barcodescanner</PackageTags>
 		<Configurations>Debug;Release</Configurations>
