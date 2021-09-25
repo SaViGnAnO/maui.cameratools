@@ -28,8 +28,8 @@ jobs:
       run: |
         $VERSION=$env:GITHUB_REF.Substring($env:GITHUB_REF.LastIndexOf('/') + 1)
         echo "PACKAGE VERSION: $VERSION"
-        dotnet build --no-restore -p:Version=$VERSION
+        dotnet build --no-restore -p:Version=$VERSION -p:PackageVersion=$VERSION
     - name: Pack Nuget Package
-      run: dotnet pack -p:Version=$VERSION --include-symbols -o ./nuget
+      run: dotnet pack -p:Version=$VERSION -p:PackageVersion=$VERSION --include-symbols -o ./nuget
     - name: Publish Nuget Package
       run: dotnet nuget push .\nuget\*.nupkg -s "nuget.org" -k ${{ secrets.NUGET_API_KEY }}
