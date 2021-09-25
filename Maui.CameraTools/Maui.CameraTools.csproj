@@ -30,7 +30,7 @@
 		<Description>Maui-supported Camera tools including CameraView, CardReaderView and BardcodeReaderView</Description>
 		<PackageIcon></PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<Version>0.1.0-pre</Version>
+		<Version>0.1.2-pre</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,camera,cameraview,cardscanner,barcodescanner</PackageTags>
@@ -51,6 +51,7 @@
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.Extensions.ML" Version="1.6.0" />
 	  <PackageReference Include="Microsoft.ML" Version="1.6.0" />
+	  <PackageReference Include="Savi.Xamarin.AndroidX.Camera.View" Version="1.0.0.5-alpha20-net6preview03.4680155" />
 	  <PackageReference Include="ZXing.Net" Version="0.16.6" />
 	  <PackageReference Include="Microsoft.ML.Experimental" Version="0.18.0" />
 	  <PackageReference Include="Microsoft.ML.ImageAnalytics" Version="1.6.0" />
@@ -66,9 +67,6 @@
 	  </PackageReference>
 	  <PackageReference Include="Xamarin.AndroidX.Camera.Lifecycle">
 	    <Version>1.0.1.1</Version>
-	  </PackageReference>
-	  <PackageReference Include="Xamarin.AndroidX.Camera.View">
-	    <Version>1.0.0.5-alpha20-net6preview03.4680155</Version>
 	  </PackageReference>
 	</ItemGroup>
 

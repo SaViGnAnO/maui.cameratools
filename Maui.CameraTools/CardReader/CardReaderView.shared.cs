@@ -80,5 +80,14 @@ namespace Maui.CameraTools.CardReader
 
         CardReaderViewHandler StrongHandler
             => Handler as CardReaderViewHandler;
+
+        public static readonly BindableProperty OverlayImageProperty =
+            BindableProperty.Create(nameof(OverlayImage), typeof(Image), typeof(CardReaderView));
+
+        public Image OverlayImage
+        {
+            get => (Image)GetValue(OverlayImageProperty);
+            set => SetValue(OverlayImageProperty, value);
+        }
     }
 }

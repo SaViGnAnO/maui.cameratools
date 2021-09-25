@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
@@ -8,10 +9,10 @@ namespace Maui.CameraTools.CameraView
     public partial class CameraViewHandler : ViewHandler<ICameraView, NativePlatformCameraPreviewView>
     {
         public static PropertyMapper<ICameraView, CameraViewHandler> CameraViewMapper = new()
-                    {
-                        [nameof(ICameraView.IsTorchOn)] = (handler, virtualView) => handler.cameraManager.UpdateTorch(virtualView.IsTorchOn),
-                        [nameof(ICameraView.CameraLocation)] = (handler, virtualView) => handler.cameraManager.UpdateCameraLocation(virtualView.CameraLocation)
-                    };
+        {
+            [nameof(ICameraView.IsTorchOn)] = (handler, virtualView) => handler.cameraManager.UpdateTorch(virtualView.IsTorchOn),
+            [nameof(ICameraView.CameraLocation)] = (handler, virtualView) => handler.cameraManager.UpdateCameraLocation(virtualView.CameraLocation)
+        };
 
         public static CommandMapper<ICameraView, CameraViewHandler> CameraCommandMapper = new()
         {
