@@ -39,7 +39,6 @@
 		<Company>Savi Studios, LLC</Company>
 		<ApplicationIcon>Resources\icon.ico</ApplicationIcon>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<AssemblyVersion> </AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
