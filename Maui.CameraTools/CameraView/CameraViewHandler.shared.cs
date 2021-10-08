@@ -4,7 +4,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public partial class CameraViewHandler : ViewHandler<ICameraView, NativePlatformCameraPreviewView>
     {

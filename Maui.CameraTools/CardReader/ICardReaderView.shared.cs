@@ -1,8 +1,8 @@
 ﻿using System;
-using Maui.CameraTools.CameraView;
-using Maui.CameraTools.CardReader.Models;
+using Savi.Maui.CameraTools.CameraView;
+using Savi.Maui.CameraTools.CardReader.Models;
 
-namespace Maui.CameraTools.CardReader
+namespace Savi.Maui.CameraTools.CardReader
 {
     public interface ICardReaderView : ICameraView
     {

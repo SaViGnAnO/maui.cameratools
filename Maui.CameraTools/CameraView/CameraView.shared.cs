@@ -2,7 +2,7 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public partial class CameraView : View, ICameraView
     {

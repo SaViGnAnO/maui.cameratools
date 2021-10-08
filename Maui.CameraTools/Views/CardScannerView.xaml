@@ -1,7 +1,7 @@
 ﻿<ContentView xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             x:Class="Maui.CameraTools.Views.CardScannerView"
-             xmlns:cv="clr-namespace:Maui.CameraTools.CameraView;assembly=Maui.CameraTools">
+             x:Class="Savi.Maui.CameraTools.Views.CardScannerView"
+             xmlns:cv="clr-namespace:Savi.Maui.CameraTools.CameraView;assembly=Savi.Maui.CameraTools">
 
     <GridLayout RowDefinitions="1*,6*,1*">
 

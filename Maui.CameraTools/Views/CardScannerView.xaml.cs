@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Maui.CameraTools.CameraView;
+using Savi.Maui.CameraTools.CameraView;
 using Microsoft.Maui.Controls;
 
-namespace Maui.CameraTools.Views
+namespace Savi.Maui.CameraTools.Views
 {
     public partial class CardScannerView : ContentView
     {

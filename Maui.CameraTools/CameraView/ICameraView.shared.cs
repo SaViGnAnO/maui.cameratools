@@ -2,7 +2,7 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public interface ICameraFrameAnalyzer
     {

@@ -1,10 +1,10 @@
-﻿using Maui.CameraTools.CameraView;
-using Maui.CameraTools.CardReader;
+﻿using Savi.Maui.CameraTools.CameraView;
+using Savi.Maui.CameraTools.CardReader;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace Maui.CameraTools.Extensions
+namespace Savi.Maui.CameraTools.Extensions
 {
     public static class CameraViewExtensions
     {

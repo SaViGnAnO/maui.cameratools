@@ -14,7 +14,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Maui;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public partial class CameraManager : IDisposable
     {

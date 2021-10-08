@@ -1,7 +1,7 @@
 ﻿using System;
-using Maui.CameraTools.CardReader.Models;
+using Savi.Maui.CameraTools.CardReader.Models;
 
-namespace Maui.CameraTools.CardReader
+namespace Savi.Maui.CameraTools.CardReader
 {
     public class CardDetectionEventArgs : EventArgs
     {

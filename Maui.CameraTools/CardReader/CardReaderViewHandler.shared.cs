@@ -1,10 +1,10 @@
 ﻿using System;
-using Maui.CameraTools.CameraView;
+using Savi.Maui.CameraTools.CameraView;
 using Microsoft.Maui;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Handlers;
 
-namespace Maui.CameraTools.CardReader
+namespace Savi.Maui.CameraTools.CardReader
 {
     public partial class CardReaderViewHandler : ViewHandler<ICardReaderView, NativePlatformCameraPreviewView>
     {

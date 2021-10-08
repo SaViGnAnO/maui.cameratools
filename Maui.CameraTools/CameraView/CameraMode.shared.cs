@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     [Flags]
     public enum CameraMode

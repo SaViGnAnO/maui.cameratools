@@ -1,7 +1,7 @@
 ﻿using System;
-using Maui.CameraTools.Models;
+using Savi.Maui.CameraTools.Models;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public class CameraFrameBufferEventArgs : EventArgs
     {

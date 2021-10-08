@@ -1,5 +1,5 @@
 ﻿
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public enum CameraLocation
     {

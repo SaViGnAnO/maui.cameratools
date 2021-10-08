@@ -1,0 +1,144 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!--<TargetFrameworks>net6.0;net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>-->
+		<TargetFrameworks>net6.0-android</TargetFrameworks>
+		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> -->
+		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
+		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-android'))">28</TargetPlatformMinVersion>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+		<IncludePackageReferencesDuringMarkupCompilation>true</IncludePackageReferencesDuringMarkupCompilation>
+		<UseSystemResourceKeys>false</UseSystemResourceKeys>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GitInfoReportImportance>high</GitInfoReportImportance>
+		<PackageId>Savi.Maui.CameraTools</PackageId>
+		<Summary>Maui-supported Camera tools including CameraView, CardReaderView and BardcodeReaderView</Summary>
+		<Authors>ataxica</Authors>
+		<Owners>ataxica</Owners>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Product>Savi.Maui.CameraTools</Product>
+		<Copyright>©2021 Savi Studios. All rights reserved.</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/SaViGnAnO/maui.cameratools</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/SaViGnAnO/maui.cameratools</RepositoryUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageReleaseNotes>Preview build for MAUI in .NET 6 RC1</PackageReleaseNotes>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<Title>Savi.Maui.CameraTools</Title>
+		<Description>Maui-supported Camera tools including CameraView, CardReaderView and BardcodeReaderView</Description>
+		<PackageIcon></PackageIcon>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageTags>dotnet,maui,camera,cameraview,cardscanner,barcodescanner</PackageTags>
+		<Configurations>Debug;Release</Configurations>
+		<Nullable>annotations</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<Company>Savi Studios, LLC</Company>
+		<ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Version>0.1.4-preview1</Version>
+		<RepositoryType>git</RepositoryType>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<SignAssembly>False</SignAssembly>
+		<DebugType>embedded</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include=".\lib\**\*.*">
+			<Pack>true</Pack>
+			<PackagePath>.\lib</PackagePath>
+		</None>
+		<!--<EmbeddedResource Include=".\lib\**\*.*" />-->
+		<PackageReference Include="DotNet.ReproducibleBuilds" Version="0.1.66" PrivateAssets="All" />
+		<PackageReference Include="ZXing.Net" Version="0.16.6" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+		<Reference Include="Xamarin.AndroidX.Camera.View">
+			<HintPath>lib\net6.0-android30.0\Xamarin.AndroidX.Camera.View.dll</HintPath>
+		</Reference>
+		<Reference Include="Xamarin.AndroidX.Camera.Camera2">
+			<HintPath>lib\net6.0-android30.0\Xamarin.AndroidX.Camera.Camera2.dll</HintPath>
+		</Reference>
+		<Reference Include="Xamarin.AndroidX.Camera.Core">
+			<HintPath>lib\net6.0-android30.0\Xamarin.AndroidX.Camera.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Xamarin.AndroidX.Camera.Lifecycle">
+			<HintPath>lib\net6.0-android30.0\Xamarin.AndroidX.Camera.Lifecycle.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="**\*.shared.cs" />
+		<Compile Include="**\*.shared.*.cs" />
+		<Compile Remove="obj\**" />
+		<EmbeddedResource Remove="obj\**" />
+		<None Remove="obj\**" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.Contains(-android)) ">
+		<Compile Include="**\*.android.cs" />
+		<Compile Include="**\*.android.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.Contains(-ios)) ">
+		<Compile Include="**\*.ios.cs" />
+		<Compile Include="**\*.ios.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.Contains('-windows')) ">
+		<Compile Include="**\*.uwp.cs" />
+		<Compile Include="**\*.uwp.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" $(TargetFramework.Contains('-maccatalyst')) ">
+		<Compile Include="**\*.macos.cs" />
+		<Compile Include="**\*.macos.*.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="Views\CardScannerView.xaml.cs">
+	    <DependentUpon>CardScannerView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\CardScannerView.xaml">
+	    <Generator></Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Extensions">
+	    <PrivateAssets>All</PrivateAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Dependencies">
+	    <PrivateAssets>All</PrivateAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+</Project>

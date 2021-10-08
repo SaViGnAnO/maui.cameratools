@@ -5,9 +5,9 @@ using AndroidX.Camera.Lifecycle;
 using AndroidX.Camera.View;
 using AndroidX.Core.Content;
 using Java.Util.Concurrent;
-using Maui.CameraTools.Models;
+using Savi.Maui.CameraTools.Models;
 
-namespace Maui.CameraTools.CameraView
+namespace Savi.Maui.CameraTools.CameraView
 {
     public partial class CameraManager
     {

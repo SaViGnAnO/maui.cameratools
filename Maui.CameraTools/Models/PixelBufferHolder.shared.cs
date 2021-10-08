@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Graphics;
 
-namespace Maui.CameraTools.Models
+namespace Savi.Maui.CameraTools.Models
 {
 	public record PixelBufferHolder
 	{

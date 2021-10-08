@@ -1,4 +1,4 @@
-﻿namespace Maui.CameraTools.CardReader.Models
+﻿namespace Savi.Maui.CameraTools.CardReader.Models
 {
     public record CardDetectionResult
     {

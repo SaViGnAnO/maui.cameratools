@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+!Maui.CameraTools/lib/*
+
 # User-specific files
 *.rsuser
 *.suo
@@ -80,7 +82,7 @@ StyleCopReport.xml
 *.obj
 *.iobj
 *.pch
-*.pdb
+#*.pdb
 *.ipdb
 *.pgc
 *.pgd
