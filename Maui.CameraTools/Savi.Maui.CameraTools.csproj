@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<!--<TargetFrameworks>net6.0;net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>-->
-		<TargetFrameworks>net6.0-android</TargetFrameworks>
+		<TargetFrameworks>net6.0;net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
+		<!--<TargetFrameworks>net6.0-android</TargetFrameworks>-->
 		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> -->
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-android'))">28</TargetPlatformMinVersion>
@@ -31,7 +31,7 @@
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>Savi.Maui.CameraTools</Title>
 		<Description>Maui-supported Camera tools including CameraView, CardReaderView and BardcodeReaderView</Description>
-		<PackageIcon></PackageIcon>
+		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,camera,cameraview,cardscanner,barcodescanner</PackageTags>
@@ -130,6 +130,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="Resources\icon.png">
+	    <Pack>True</Pack>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Update="Microsoft.Maui.Extensions">
 	    <PrivateAssets>All</PrivateAssets>
 	  </PackageReference>
@@ -139,6 +145,10 @@
 	  <PackageReference Update="Microsoft.Maui.Dependencies">
 	    <PrivateAssets>All</PrivateAssets>
 	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\" />
 	</ItemGroup>
 
 </Project>
